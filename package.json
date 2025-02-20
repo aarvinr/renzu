@@ -2,6 +2,9 @@
 	"author": "Aarvin Roshin",
 	"bugs": "https://github.com/aarvinr/renzu/issues",
 	"description": "The bundler-less interface library for TypeScript",
+	"devDependencies": {
+		"prettier": "3.5.1"
+	},
 	"engines": {
 		"node": ">=22",
 		"pnpm": ">=10"
