@@ -1,9 +1,16 @@
 {
 	"compilerOptions": {
+		"allowImportingTsExtensions": true,
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
 		"alwaysStrict": true,
+		"declaration": true,
+		"downlevelIteration": true,
+		"emitDeclarationOnly": true,
 		"exactOptionalPropertyTypes": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "Node16",
+		"moduleResolution": "node16",
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitAny": true,
 		"noImplicitOverride": true,
@@ -11,20 +18,13 @@
 		"noImplicitThis": true,
 		"noPropertyAccessFromIndexSignature": true,
 		"noUncheckedIndexedAccess": true,
+		"noUncheckedSideEffectImports": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
+		"outFile": "dist/index.d.ts",
 		"strict": true,
-		"useUnknownInCatchVariables": true,
-		"module": "Node16",
-		"moduleResolution": "node16",
-		"noUncheckedSideEffectImports": true,
-		"declaration": true,
-		"downlevelIteration": true,
-		"emitDeclarationOnly": true,
-		"forceConsistentCasingInFileNames": true,
 		"target": "ES2024",
-		"allowImportingTsExtensions": true,
-		"outFile": "dist/index.d.ts"
+		"useUnknownInCatchVariables": true
 	},
 	"files": ["src/index.ts"]
 }
