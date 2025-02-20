@@ -2,7 +2,7 @@ name: Prettier
 on: [push, pull_request]
 jobs:
   checkout-install-format:
-    name: Checkout
+    name: Checkout, Install, and Format
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
