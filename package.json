@@ -30,10 +30,10 @@
 	"repository": "github:aarvinr/renzu",
 	"scripts": {
 		"build": "pnpm run build:declarations && pnpm run build:source",
-		"build:declarations": "pnpm exec tsc",
-		"build:source": "pnpm exec esbuild src/index.ts --bundle --format=esm --minify --outfile=dist/index.js --platform=node",
-		"docs": "pnpm exec typedoc --entryPoints src/index.ts",
-		"format": "pnpm exec prettier --write ."
+		"build:declarations": "tsc",
+		"build:source": "esbuild src/index.ts --bundle --format=esm --minify --outfile=dist/index.js --platform=node",
+		"docs": "typedoc --entryPoints src/index.ts",
+		"format": "prettier --write ."
 	},
 	"type": "module",
 	"version": "0.0.0"
