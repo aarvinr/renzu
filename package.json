@@ -22,7 +22,7 @@
 	"files": [
 		"dist"
 	],
-	"homepage": "https://github.com/aarvinr/renzu#readme",
+	"homepage": "https://aarvinr.github.io/renzu",
 	"license": "CC0-1.0",
 	"name": "renzu",
 	"pnpm": {
