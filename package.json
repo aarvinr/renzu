@@ -12,6 +12,12 @@
 		"node": ">=22",
 		"pnpm": ">=10"
 	},
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
 	"homepage": "https://github.com/aarvinr/renzu#readme",
 	"name": "renzu",
 	"pnpm": {
