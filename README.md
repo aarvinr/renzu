@@ -7,11 +7,13 @@ pnpm add renzu
 ```
 
 ```ts
-function App() {
-	return html`<main>${Hello("world")}</main>`;
+function Foo() {
+	return html`<main>${client(Bar, "baz")}</main>`;
 }
 
-function Hello(name: string) {
-	return html`<p>Hello, ${name}!</p>`;
+function Bar(qaz: string) {
+	client();
+
+	return html`<p>${window.prompt(qaz)}</p>`;
 }
 ```
