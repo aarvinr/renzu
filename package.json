@@ -19,6 +19,9 @@
 			"types": "./dist/index.d.ts"
 		}
 	},
+	"files": [
+		"dist"
+	],
 	"homepage": "https://github.com/aarvinr/renzu#readme",
 	"license": "CC0-1.0",
 	"name": "renzu",
@@ -36,5 +39,5 @@
 		"format": "prettier --write ."
 	},
 	"type": "module",
-	"version": "0.0.0"
+	"version": "0.1.0"
 }
