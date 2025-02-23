@@ -79,7 +79,7 @@ function html(
 	values: readonly unknown[],
 	clients?: readonly Client[],
 ): HTML {
-	if (strings.length === 1 && !clients) {
+	if (strings.length === 1 && clients === undefined) {
 		return {
 			string: strings[0]!,
 		};
