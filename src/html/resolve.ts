@@ -23,7 +23,7 @@ import type { Client } from "../client/index.ts";
 export default function (result: HTML, string: string, value: unknown): HTML {
 	if (client(value)) {
 		return {
-			clients: [value as Client, ...(result.clients as Client[])],
+			clients: [value as Client, ...(result.clients ?? [])],
 			string: string + result.string,
 		};
 	}
