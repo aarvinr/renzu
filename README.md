@@ -12,7 +12,9 @@ function Foo() {
 }
 
 function Bar(qaz: string) {
-	client();
+	if (typeof window === "undefined") {
+		throw new ClientOnlyError();
+	}
 
 	return html`<p>${window.prompt(qaz)}</p>`;
 }

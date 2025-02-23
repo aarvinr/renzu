@@ -1,6 +1,7 @@
 {
+	"entryPoints": ["./src/index.ts"],
 	"compilerOptions": {
-		"outFile": null
+		"skipLibCheck": true
 	},
 	"headings": {
 		"readme": false

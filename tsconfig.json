@@ -21,13 +21,7 @@
 		"noUncheckedSideEffectImports": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"outFile": "dist/index.d.ts",
-		"paths": {
-			"@/*": ["./src/*"]
-		},
 		"strict": true,
-		"target": "ES2024",
 		"useUnknownInCatchVariables": true
-	},
-	"files": ["src/index.ts"]
+	}
 }

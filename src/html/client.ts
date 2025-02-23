@@ -1,4 +1,4 @@
-import type { Client } from "@/server/client/index.ts";
+import type { Client } from "../client/index.ts";
 
 export default function (value: unknown): Client | void {
 	if (

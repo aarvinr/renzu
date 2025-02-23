@@ -2,7 +2,7 @@ import client from "./client.ts";
 import resolve from "./resolve.ts";
 import string from "./string.ts";
 
-import type { Client } from "@/server/client/index.ts";
+import type { Client } from "../client/index.ts";
 
 export type HTML = {
 	clients?: readonly Client[];

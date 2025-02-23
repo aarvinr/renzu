@@ -1,6 +1,6 @@
 import type { HTML } from "./index.ts";
 
-import type { Client } from "@/server/client/index.ts";
+import type { Client } from "../client/index.ts";
 
 export default function (
 	client: Client,
