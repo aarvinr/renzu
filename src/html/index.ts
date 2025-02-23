@@ -5,7 +5,7 @@ import type { Client } from "../client/index.ts";
 
 /**
  * {@link HTML | HTML}.
- * @internal
+ * @public
  */
 export type HTML = {
 	/**
