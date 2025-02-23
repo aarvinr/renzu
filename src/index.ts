@@ -1,7 +1,5 @@
-/**
- * The bundler-less interface library for TypeScript.
- * @packageDocumentation
- */
+export type { Client } from "./server/client/index.ts";
+export type { HTML } from "./server/html/index.ts";
 
-export { default as client } from "./client.ts";
-export { default as html } from "./html.ts";
+export { default as client } from "./server/client/index.ts";
+export { default as html } from "./server/html/index.ts";
