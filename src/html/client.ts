@@ -27,8 +27,8 @@ export default function (value: unknown): boolean {
 		!value!.hasOwnProperty("parameters") ||
 		!value!.hasOwnProperty("path")
 	) {
-		return true;
+		return false;
 	}
 
-	return false;
+	return true;
 }
