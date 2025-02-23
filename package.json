@@ -25,7 +25,7 @@
 	"files": [
 		"dist"
 	],
-	"homepage": "https://aarvinr.github.io/renzu",
+	"homepage": "https://renzu.js.org",
 	"license": "CC0-1.0",
 	"name": "renzu",
 	"pnpm": {
