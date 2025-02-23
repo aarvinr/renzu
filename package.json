@@ -1,9 +1,6 @@
 {
 	"author": "Aarvin Roshin",
 	"bugs": "https://github.com/aarvinr/renzu/issues",
-	"dependencies": {
-		"superjson": "^2.2.2"
-	},
 	"description": "The bundler-less interface library for TypeScript",
 	"devDependencies": {
 		"@types/node": "^22.13.4",
@@ -38,5 +35,5 @@
 		"docs": "typedoc"
 	},
 	"type": "module",
-	"version": "0.5.0"
+	"version": "0.6.0"
 }
