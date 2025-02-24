@@ -26,7 +26,7 @@ export type Client = {
 	parameters: unknown[];
 
 	/**
-	 * The path of the {@link Client | client component}
+	 * The path of the {@link Client | client component}.
 	 */
 	path: PathLike;
 };
