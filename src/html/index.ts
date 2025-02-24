@@ -1,6 +1,3 @@
-import resolve from "./resolve.ts";
-import string from "./string.ts";
-
 import type { Client } from "../client/index.ts";
 
 /**
@@ -14,16 +11,13 @@ export type HTML = {
 	clients?: readonly Client[];
 
 	/**
-	 * The string of the {@link HTML | HTML}.
+	 * The strings of the {@link HTML | HTML}.
 	 */
-	string: string;
+	strings: readonly string[];
 };
 
 /**
  * Returns the {@link HTML | HTML} of a component.
- *
- * @remarks
- * The strings and values should be passed as a tagged template literal.
  *
  * @param strings - The strings of the component.
  * @param values - The values of the component.
@@ -32,27 +26,23 @@ export type HTML = {
  * @example
  * Here's a simple example:
  * ```ts
- * // Returns the HTML of `<main>Hello, world!</main>`:
- * function Foo() {
- * 	return html`<main>Hello, world!</main>`;
- * }
+ * // Returns the HTML of `<p>Hello, world!</p>`:
+ * return html`<p>Hello, world!</p>`;
  * ```
  * @example
  * Here's an example with parameters:
  * ```ts
- * // Returns the HTML of `<main>Hello, ${name}!</main>`:
- * function Foo(name: string) {
- * 	return html`<main>Hello, ${name}!</main>`;
- * }
+ * // Returns the HTML of ```<p>Hello, ${name}!</p>```:
+ * return html`<p>Hello, ${name}!</p>`;
  * ```
  *
  * @public
  */
 export default function (
 	strings: TemplateStringsArray,
-	...values: readonly unknown[]
+	...values: unknown[]
 ): HTML {
-	return html(strings, values);
+	return html(Array.from(strings), values.slice());
 }
 
 /**
@@ -60,38 +50,59 @@ export default function (
  *
  * @param strings - The strings of the component.
  * @param values - The values of the component.
- * @param clients - The {@link Client | client component}s of the component.
  * @returns The {@link HTML | HTML} of the component.
  *
  * @example
  * Here's a simple example:
  * ```ts
- * // Returns the HTML of `<main>Hello, world!</main>`:
- * function Foo() {
- * 	return html(html`<main>Hello, world!</main>`);
- * }
+ * // Returns the HTML of `<p>Hello, world!</p>`:
+ * return html(["<p>Hello, world!</p>"]);
+ * ```
+ * @example
+ * Here's an example with parameters:
+ * ```ts
+ * // Returns the HTML of ```<p>Hello, ${name}!</p>```:
+ * return html(["<p>Hello, ", "!</p>"], [name]);
  * ```
  *
  * @internal
  */
-function html(
-	strings: readonly string[],
-	values: readonly unknown[],
-	clients?: readonly Client[],
-): HTML {
-	if (strings.length === 1 && clients === undefined) {
+function html(strings: readonly string[], values: readonly unknown[]): HTML {
+	const string = strings[0]!;
+
+	if (values.length === 0) {
+		return { strings };
+	}
+	const value = values[0]!;
+
+	const slice = html(strings.slice(1), values.slice(1));
+	if (
+		typeof value === "object" &&
+		"identifier" in value &&
+		"name" in value &&
+		"parameters" in value &&
+		"path" in value
+	) {
 		return {
-			string: strings[0]!,
+			clients: [value as Client, ...(slice.clients ?? [])],
+			strings: [string, ...slice.strings],
 		};
 	}
 
-	if (strings.length === 1) {
-		return string(strings, clients!);
+	if (slice.clients === undefined) {
+		return {
+			strings: [
+				string + (value ?? "") + slice.strings[0],
+				...slice.strings.slice(1),
+			],
+		};
 	}
 
-	return resolve(
-		html(strings.slice(1), values.slice(1), clients),
-		strings[0]!,
-		values[0],
-	);
+	return {
+		clients: slice.clients,
+		strings: [
+			string + (value ?? "") + slice.strings[0],
+			...slice.strings.slice(1),
+		],
+	};
 }
