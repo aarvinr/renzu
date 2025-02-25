@@ -61,9 +61,9 @@ function path(name: string, lines: string[]): PathLike {
 		throw new Error(`Could not find component \`${name}()\`'s path.`);
 	}
 
-	const match = lines[0]!.match(
-		new RegExp(`\\b${name}\\b\\s*\\((.*?):\\d+:\\d+\\)`),
-	);
+	const match = lines
+		.at(0)!
+		.match(new RegExp(`\\b${name}\\b\\s*\\((.*?):\\d+:\\d+\\)`));
 	if (match === null || match.length < 2) {
 		return path(name, lines.slice(1));
 	}

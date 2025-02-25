@@ -1,3 +1,6 @@
+import client from "./client.ts";
+import merge from "./merge.ts";
+
 import type { Client } from "../client/index.ts";
 
 /**
@@ -68,31 +71,29 @@ export default function (
  * @internal
  */
 function html(strings: readonly string[], values: readonly unknown[]): HTML {
-	const string = strings[0]!;
+	const string = strings.at(0)!;
 
 	if (values.length === 0) {
 		return { strings };
 	}
-	const value = values[0]!;
+	const value = values.at(0)!;
 
 	const slice = html(strings.slice(1), values.slice(1));
-	if (
-		typeof value === "object" &&
-		"identifier" in value &&
-		"name" in value &&
-		"parameters" in value &&
-		"path" in value
-	) {
+	if (client(value)) {
 		return {
 			clients: [value as Client, ...(slice.clients ?? [])],
 			strings: [string, ...slice.strings],
 		};
 	}
 
+	if (typeof value === "object" && value !== null && "strings" in value) {
+		return merge(value as HTML, slice, string);
+	}
+
 	if (slice.clients === undefined) {
 		return {
 			strings: [
-				string + (value ?? "") + slice.strings[0],
+				string + (value ?? "") + slice.strings.at(0),
 				...slice.strings.slice(1),
 			],
 		};
@@ -101,7 +102,7 @@ function html(strings: readonly string[], values: readonly unknown[]): HTML {
 	return {
 		clients: slice.clients,
 		strings: [
-			string + (value ?? "") + slice.strings[0],
+			string + (value ?? "") + slice.strings.at(0),
 			...slice.strings.slice(1),
 		],
 	};
